@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'groups',
-  templateUrl: 'groups.html'
+    selector: 'groups',
+    templateUrl: 'groups.html'
 })
 export class GroupsComponent {
 
-  text: string;
+    private groups = [{ "id": "1", "name": "Bar de Moe", "desc": "", "image": "moebar.jpg", "userIds": [1, 2, 3] },
+    { "id": "2", "name": "Central Nuclear", "desc": "", "image": "nuclear.jpeg", "userIds": [4] },
+    { "id": "3", "name": "Iglesia", "desc": "", "image": "church.jpg", "userIds": [1, 2, 5] }];
 
-  constructor() {
-    console.log('Hello GroupsComponent Component');
-    this.text = 'Hello World';
-  }
-
+    constructor() {
+        console.log('Hello GroupsComponent Component');
+    }
 }
