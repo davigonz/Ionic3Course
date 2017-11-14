@@ -1,6 +1,6 @@
 <!-- Generated template for the GroupsComponent component -->
 <ion-list>
-    <ion-item *ngFor="let group of groups">
-        {{group.name}}
+    <ion-item no-lines *ngFor="let group of groups">
+        <background-card [data]="group"></background-card>
     </ion-item>
 </ion-list>
