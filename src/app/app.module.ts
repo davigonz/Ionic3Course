@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GroupsComponent } from '../components/groups/groups';
 import { BackgroundCardComponent } from '../components/background-card/background-card';
+import { GroupsProvider } from '../providers/groups/groups';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { BackgroundCardComponent } from '../components/background-card/backgroun
     providers: [
         StatusBar,
         SplashScreen,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        GroupsProvider
     ]
 })
 export class AppModule { }

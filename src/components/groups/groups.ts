@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Group, GroupsProvider } from '../../providers/groups/groups'
 
 /**
  * Generated class for the GroupsComponent component.
@@ -8,15 +9,14 @@ import { Component } from '@angular/core';
  */
 @Component({
     selector: 'groups',
-    templateUrl: 'groups.html'
+    templateUrl: 'groups.html',
+    providers: [GroupsProvider]
 })
 export class GroupsComponent {
 
-    private groups = [{ "id": "1", "name": "Bar de Moe", "desc": "", "image": "moebar.jpg", "userIds": [1, 2, 3] },
-    { "id": "2", "name": "Central Nuclear", "desc": "", "image": "nuclear.jpeg", "userIds": [4] },
-    { "id": "3", "name": "Iglesia", "desc": "", "image": "church.jpg", "userIds": [1, 2, 5] }];
+    private groups: Group[];
 
-    constructor() {
-        console.log('Hello GroupsComponent Component');
+    constructor(groupsProvider: GroupsProvider) {
+        this.groups = groupsProvider.getGroups();
     }
 }
