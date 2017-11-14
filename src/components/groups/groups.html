@@ -1,6 +1,6 @@
 <!-- Generated template for the GroupsComponent component -->
 <ion-list>
     <ion-item no-lines *ngFor="let group of groups">
-        <background-card [data]="group"></background-card>
+        <background-card [data]="group" (cardClicked)="showChatPage($event)"></background-card>
     </ion-item>
 </ion-list>

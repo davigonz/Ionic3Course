@@ -5,15 +5,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
+// Pages
 import { HomePage } from '../pages/home/home';
+import { ChatPage } from '../pages/chat/chat';
+
+// Components
 import { GroupsComponent } from '../components/groups/groups';
 import { BackgroundCardComponent } from '../components/background-card/background-card';
+
+// Providers
 import { GroupsProvider } from '../providers/groups/groups';
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
+        ChatPage,
         GroupsComponent,
         BackgroundCardComponent
     ],
@@ -24,7 +32,8 @@ import { GroupsProvider } from '../providers/groups/groups';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        HomePage
+        HomePage,
+        ChatPage
     ],
     providers: [
         StatusBar,

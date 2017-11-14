@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the BackgroundCardComponent component.
@@ -15,11 +15,18 @@ export class BackgroundCardComponent {
     @Input()
     data;
 
+    @Output()
+    cardClicked = new EventEmitter();
+
     constructor() {
         console.log('Hello BackgroundCardComponent Component');
     }
 
     private getCompleteUrl() {
         return "images/" + this.data.image;
+    }
+
+    private selectCard() {
+        this.cardClicked.emit(this.data);
     }
 }
