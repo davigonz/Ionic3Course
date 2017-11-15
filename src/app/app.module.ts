@@ -18,6 +18,7 @@ import { CustomItemComponent } from '../components/custom-item/custom-item';
 
 // Providers
 import { GroupsProvider } from '../providers/groups/groups';
+import { MessagesProvider } from '../providers/messages/messages';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { GroupsProvider } from '../providers/groups/groups';
         StatusBar,
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
-        GroupsProvider
+        GroupsProvider,
+        MessagesProvider
     ]
 })
 export class AppModule { }
