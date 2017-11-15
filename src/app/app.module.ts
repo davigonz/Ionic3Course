@@ -14,6 +14,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { GroupsComponent } from '../components/groups/groups';
 import { BackgroundCardComponent } from '../components/background-card/background-card';
 import { MessagesComponent } from '../components/messages/messages';
+import { CustomItemComponent } from '../components/custom-item/custom-item';
 
 // Providers
 import { GroupsProvider } from '../providers/groups/groups';
@@ -25,7 +26,8 @@ import { GroupsProvider } from '../providers/groups/groups';
         ChatPage,
         GroupsComponent,
         BackgroundCardComponent,
-        MessagesComponent
+        MessagesComponent,
+        CustomItemComponent
     ],
     imports: [
         BrowserModule,
