@@ -19,7 +19,7 @@ export class GroupsComponent implements OnInit {
     private groups;
 
     constructor(private groupsProvider: GroupsProvider, public navCtrl: NavController) {
-        
+        console.log('Hello GroupsComponent');
     }
 
     ngOnInit() {

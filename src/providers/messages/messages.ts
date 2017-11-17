@@ -24,13 +24,15 @@ export class Message {
 @Injectable()
 export class MessagesProvider {
 
-    private messages : Message[] = [
-        new Message("1", "Hola, qué tal?", {"image": "lisa-simpson.png" }, "1"),
-        new Message("2", "Múltiplícate por 0", {"image": "bart-simpson.png" }, "1"),
-        new Message("3", "Bart! Habla bien!", {"image": "marge-simpson.png" }, "1")
-    ]
+    BASE_URL: string = 'http://localhost:3000';
+    GROUP_URL: string = '/group/';
+    MESSAGES_URL: string = '/messages';
 
-    public getMessages() : Message[] {
-        return this.messages;
+    constructor(public http: HttpClient) {
+        console.log('Hello MessagesProvider');
+    }
+
+    public getMessages(groupId) {
+        return this.http.get(this.BASE_URL + this.GROUP_URL + groupId + this.MESSAGES_URL);
     }
 }
