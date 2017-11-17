@@ -36,7 +36,7 @@ export class LoginPage {
 
         this.loginProvider.login(this.credentials).subscribe(
             data => {
-                // localStorage.setItem('token', data.toString);
+                localStorage.setItem('token', data.userToken);
                 // push HomePage on to the navigation stack
                 this.navCtrl.push(HomePage);
             },
