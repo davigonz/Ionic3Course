@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 
 // Pages
+import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
 
@@ -23,6 +24,7 @@ import { MessagesProvider } from '../providers/messages/messages';
 @NgModule({
     declarations: [
         MyApp,
+        LoginPage,
         HomePage,
         ChatPage,
         GroupsComponent,
@@ -37,6 +39,7 @@ import { MessagesProvider } from '../providers/messages/messages';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
+        LoginPage,
         HomePage,
         ChatPage
     ],
