@@ -26,13 +26,14 @@ export class Group {
 @Injectable()
 export class GroupsProvider {
 
-    private groups = [
-        new Group("1", "Bar de Moe", "", "moebar.jpg", ["1", "2", "3"]),
-        new Group("2", "Central Nuclear", "", "nuclear.jpeg", ["4"]),
-        new Group("3", "Iglesia", "", "church.jpg", ["1","2","5"])
-    ];
+    BASE_URL: string = 'http://localhost:3000';
+    GROUPS_URL: string = '/groups';
 
-    public getGroups() : Group[] {
-        return this.groups;
+    constructor(public http: HttpClient) {
+        console.log('Hello GroupsProvider');
+    }
+
+    public getGroups() {
+        return this.http.get(this.BASE_URL + this.GROUPS_URL);
     }
 }

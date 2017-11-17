@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Group, GroupsProvider } from '../../providers/groups/groups';
 import { NavController } from 'ionic-angular';
 import { ChatPage } from '../../pages/chat/chat';
@@ -14,12 +14,23 @@ import { ChatPage } from '../../pages/chat/chat';
     templateUrl: 'groups.html',
     providers: [GroupsProvider]
 })
-export class GroupsComponent {
+export class GroupsComponent implements OnInit {
 
-    private groups: Group[];
+    private groups;
 
-    constructor(groupsProvider: GroupsProvider, public navCtrl: NavController) {
-        this.groups = groupsProvider.getGroups();
+    constructor(private groupsProvider: GroupsProvider, public navCtrl: NavController) {
+        
+    }
+
+    ngOnInit() {
+        this.groupsProvider.getGroups().subscribe(
+            data => {
+                this.groups = data;
+            },
+            err => {
+                console.log(err.message);
+            }
+        );
     }
 
     private showChatPage($event) {
