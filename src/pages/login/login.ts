@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { HomePage } from '../home/home';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,16 +15,17 @@ import { HomePage } from '../home/home';
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html',
+    providers: [LoginProvider]
 })
 export class LoginPage {
 
-    private credentials = {
-        user: "",
+    credentials = {
+        username: "",
         password: ""
     };
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, 
-        private alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        private alertCtrl: AlertController, private loginProvider: LoginProvider) {
     }
 
     ionViewDidLoad() {
@@ -31,17 +33,20 @@ export class LoginPage {
     }
 
     private login() {
-        if (this.credentials.user == "admin" && this.credentials.password == "aaaaa") {
 
-            this.navCtrl.push(HomePage);
-
-        } else {
-
-            let alert = this.alertCtrl.create({
-                title: 'Credenciales incorrectas',
-                buttons: ['Dismiss']
-            });
-            alert.present();
-        }
+        this.loginProvider.login(this.credentials).subscribe(
+            data => {
+                // localStorage.setItem('token', data.toString);
+                // push HomePage on to the navigation stack
+                this.navCtrl.push(HomePage);
+            },
+            err => {
+                let alert = this.alertCtrl.create({
+                    title: err.status == 401 ? 'Credenciales incorrectas' : err.message,
+                    buttons: ['OK']
+                });
+                alert.present();
+            }
+        );
     }
 }

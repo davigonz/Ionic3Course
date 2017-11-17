@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,6 +21,7 @@ import { CustomItemComponent } from '../components/custom-item/custom-item';
 // Providers
 import { GroupsProvider } from '../providers/groups/groups';
 import { MessagesProvider } from '../providers/messages/messages';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
     declarations: [
@@ -34,7 +36,8 @@ import { MessagesProvider } from '../providers/messages/messages';
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        HttpClientModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -48,7 +51,8 @@ import { MessagesProvider } from '../providers/messages/messages';
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         GroupsProvider,
-        MessagesProvider
+        MessagesProvider,
+        LoginProvider
     ]
 })
 export class AppModule { }
