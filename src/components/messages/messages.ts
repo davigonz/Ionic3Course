@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Message, MessagesProvider } from '../../providers/messages/messages';
 
 /**
@@ -12,26 +12,12 @@ import { Message, MessagesProvider } from '../../providers/messages/messages';
     templateUrl: 'messages.html',
     providers: [MessagesProvider]
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
 
     @Input()
     data
 
-    private messages;
-
     constructor(private messagesProvider: MessagesProvider) {
         console.log('Hello MessagesComponent');
-    }
-
-    ngOnInit() {
-
-        this.messagesProvider.getMessages(this.data._id).subscribe(
-            data => {
-                this.messages = data;
-            }, 
-            err => {
-                console.log(err.message);
-            }
-        );
     }
 }

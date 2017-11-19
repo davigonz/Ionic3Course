@@ -19,27 +19,41 @@ export class ChatPage {
 
     private group;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private messages;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams,
         private messagesProvider: MessagesProvider) {
         this.group = navParams.get('group');
     }
 
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ChatPage');
+        this.getMessages();
+    }
+
     sendMessage(message: String) {
         this.messagesProvider.addMessage(
-            this.group._id, 
-            message, 
+            this.group._id,
+            message,
             localStorage.getItem('userId')
         ).subscribe(
             data => {
-                // Rerender messages component
-                // Push the new message to it
+                // Refresh messages
+                this.getMessages();
             },
             err => {
             }
-        );
+            );
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad ChatPage');
+    private getMessages() {
+        this.messagesProvider.getMessages(this.group._id).subscribe(
+            data => {
+                this.messages = data;
+            },
+            err => {
+                console.log(err.message);
+            }
+        );
     }
 }
