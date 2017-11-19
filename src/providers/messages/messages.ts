@@ -35,4 +35,12 @@ export class MessagesProvider {
     public getMessages(groupId) {
         return this.http.get(this.BASE_URL + this.GROUP_URL + groupId + this.MESSAGES_URL);
     }
+
+    public addMessage(groupId, content, userId) {
+        var data = {
+            "content": content,
+            "userId": userId
+        }
+        return this.http.post(this.BASE_URL + this.GROUP_URL + groupId + this.MESSAGES_URL, data);
+    }
 }
